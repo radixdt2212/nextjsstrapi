@@ -1,7 +1,9 @@
 import Head from "next/head";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { getProducts, getProduct } from "../../utils/api";
 import { getStrapiMedia } from "../../utils/medias";
+import { strapiLogo } from "../../public/strapi.png";
 
 const ProductPage = ({ product }) => {
   const router = useRouter();
@@ -14,10 +16,16 @@ const ProductPage = ({ product }) => {
       <Head>
         <title>{product.title} product</title>
       </Head>
-      <div className="rounded-t-lg pt-2 pb-2">
-        <img
+      <div className="rounded-t-lg pt-2 pb-2 text-center content-center m-auto">
+        <Image
           src={getStrapiMedia(product.image.formats.thumbnail.url)}
-          className="m-auto"
+          className="m-auto align-middle"
+          placeholder="blur"
+          blurDataURL="null"
+          height={200}
+          layout="fill"
+          objectFit="cover"
+          width={200}
           alt={product.title}
         />
       </div>

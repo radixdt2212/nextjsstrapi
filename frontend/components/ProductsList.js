@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { getStrapiMedia } from "../utils/medias";
 
+import Image from "next/image";
+
 const ProductsList = ({ products }) => {
   return (
     <div className="m-6 grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-4 mt-8">
@@ -12,8 +14,15 @@ const ProductsList = ({ products }) => {
           <Link href={`/products/${_product.slug}`}>
             <a>
               <div className="rounded-t-lg bg-white pt-2 pb-2">
-                <img
+                <Image
                   className="crop mx-auto"
+                  placeholder="blur"
+                  blurDataURL="null"
+                  objectFit="cover"
+                  height={200}
+                  quality={70}
+                  loading="lazy"
+                  width={200}
                   src={getStrapiMedia(_product.image.formats.thumbnail.url)}
                   alt={_product.title}
                 />
